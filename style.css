@@ -330,6 +330,87 @@ a {
   font-size: 15px;
 }
 
+.shuffle-showcase {
+  margin: 8px 0 28px;
+  padding: 28px;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 1.05fr);
+  gap: 22px;
+  align-items: center;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.shuffle-card {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  box-shadow: var(--shadow);
+  border-radius: 26px;
+  padding: 18px;
+  overflow: hidden;
+}
+
+.shuffle-rows {
+  display: grid;
+  gap: 14px;
+}
+
+.shuffle-row {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+}
+
+.shuffle-row-forward {
+  animation: shuffle-left 28s linear infinite;
+}
+
+.shuffle-row-reverse {
+  animation: shuffle-right 30s linear infinite;
+}
+
+.shuffle-tile {
+  width: clamp(116px, 13vw, 152px);
+  aspect-ratio: 0.82 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  flex: 0 0 auto;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.shuffle-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(5, 5, 5, 0.24) 100%);
+}
+
+.shuffle-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tilt-left {
+  transform: rotate(-3deg);
+}
+
+.tilt-right {
+  transform: rotate(3deg);
+}
+
+.shuffle-card:hover .shuffle-row-forward,
+.shuffle-card:hover .shuffle-row-reverse {
+  animation-play-state: paused;
+}
+
 .help-strip {
   margin: 28px 0 60px;
   padding: 28px;
@@ -448,12 +529,31 @@ footer a:hover {
   color: var(--red);
 }
 
+@keyframes shuffle-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 6px));
+  }
+}
+
+@keyframes shuffle-right {
+  from {
+    transform: translateX(calc(-50% - 6px));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @media (max-width: 980px) {
   #hero,
   .steps,
   .callout-grid,
   .story-grid,
-  .layout-highlight {
+  .layout-highlight,
+  .shuffle-showcase {
     grid-template-columns: 1fr;
   }
 
@@ -473,7 +573,8 @@ footer a:hover {
   .install-card,
   .callout-card,
   .help-strip,
-  .instruction-step {
+  .instruction-step,
+  .shuffle-showcase {
     padding: 22px;
     border-radius: 22px;
   }
@@ -489,5 +590,9 @@ footer a:hover {
 
   .instruction-step {
     grid-template-columns: 1fr;
+  }
+
+  .shuffle-tile {
+    width: 110px;
   }
 }
