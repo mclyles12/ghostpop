@@ -114,6 +114,211 @@ a {
 .hero-copy {
   padding: 44px;
   border-radius: 36px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 520px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-layout-cloud {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-layout-cloud::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.56) 38%, rgba(5, 5, 5, 0.22) 100%),
+    radial-gradient(circle at 78% 28%, rgba(255, 35, 0, 0.18), transparent 24%);
+}
+
+.hero-slot,
+.hero-fashion-card {
+  position: absolute;
+  border-radius: 24px;
+}
+
+.hero-slot {
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px);
+}
+
+.hero-fashion-card {
+  width: clamp(118px, 14vw, 168px);
+  aspect-ratio: 0.78 / 1;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35);
+  transform-origin: center;
+}
+
+.hero-fashion-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(5, 5, 5, 0.26));
+}
+
+.hero-fashion-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slot-one {
+  width: 148px;
+  height: 192px;
+  top: 68px;
+  right: 220px;
+  transform: rotate(-8deg);
+}
+
+.slot-two {
+  width: 152px;
+  height: 198px;
+  top: 210px;
+  right: 308px;
+  transform: rotate(6deg);
+}
+
+.slot-three {
+  width: 158px;
+  height: 204px;
+  top: 82px;
+  right: 34px;
+  transform: rotate(8deg);
+}
+
+.slot-four {
+  width: 146px;
+  height: 188px;
+  top: 278px;
+  right: 112px;
+  transform: rotate(-6deg);
+}
+
+.slot-five {
+  width: 134px;
+  height: 174px;
+  top: 30px;
+  right: 132px;
+  transform: rotate(4deg);
+}
+
+.slot-six {
+  width: 128px;
+  height: 166px;
+  top: 332px;
+  right: 22px;
+  transform: rotate(-2deg);
+}
+
+.card-one {
+  top: 54px;
+  right: 238px;
+  transform: rotate(-9deg);
+  animation: drift-one 9s ease-in-out infinite;
+}
+
+.card-two {
+  top: 160px;
+  right: 326px;
+  transform: rotate(7deg);
+  animation: drift-two 11s ease-in-out infinite;
+}
+
+.card-three {
+  top: 86px;
+  right: 56px;
+  transform: rotate(10deg);
+  animation: drift-three 10s ease-in-out infinite;
+}
+
+.card-four {
+  top: 286px;
+  right: 124px;
+  transform: rotate(-7deg);
+  animation: drift-four 12s ease-in-out infinite;
+}
+
+.card-five {
+  top: 162px;
+  right: 166px;
+  transform: rotate(-3deg) scale(1.08);
+  z-index: 3;
+  animation: drag-hover 6.5s ease-in-out infinite;
+}
+
+.card-six {
+  top: 304px;
+  right: 286px;
+  transform: rotate(5deg);
+  animation: drift-five 10.5s ease-in-out infinite;
+}
+
+.card-seven {
+  top: 24px;
+  right: 118px;
+  transform: rotate(12deg) scale(0.88);
+  opacity: 0.88;
+  animation: drift-six 13s ease-in-out infinite;
+}
+
+.card-eight {
+  top: 346px;
+  right: 8px;
+  transform: rotate(-10deg) scale(0.86);
+  opacity: 0.84;
+  animation: drift-seven 12.5s ease-in-out infinite;
+}
+
+.card-nine {
+  top: 116px;
+  right: 114px;
+  transform: rotate(14deg) scale(0.72);
+  opacity: 0.9;
+  animation: drift-eight 9.5s ease-in-out infinite;
+}
+
+.card-ten {
+  top: 420px;
+  right: 248px;
+  transform: rotate(-8deg) scale(0.76);
+  opacity: 0.86;
+  animation: drift-nine 11.5s ease-in-out infinite;
+}
+
+.card-eleven {
+  top: 8px;
+  right: 328px;
+  transform: rotate(-14deg) scale(0.82);
+  opacity: 0.76;
+  animation: drift-ten 14s ease-in-out infinite;
+}
+
+.card-twelve {
+  top: 248px;
+  right: 420px;
+  transform: rotate(9deg) scale(0.8);
+  opacity: 0.82;
+  animation: drift-eleven 12s ease-in-out infinite;
+}
+
+.is-dragging {
+  cursor: grabbing;
+  border-color: rgba(255, 106, 82, 0.52);
+  box-shadow: 0 32px 68px rgba(0, 0, 0, 0.42);
 }
 
 #hero h1 {
@@ -330,87 +535,6 @@ a {
   font-size: 15px;
 }
 
-.shuffle-showcase {
-  margin: 8px 0 28px;
-  padding: 28px;
-  border-radius: 30px;
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 1.05fr);
-  gap: 22px;
-  align-items: center;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--panel-strong), var(--panel));
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.shuffle-card {
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-  box-shadow: var(--shadow);
-  border-radius: 26px;
-  padding: 18px;
-  overflow: hidden;
-}
-
-.shuffle-rows {
-  display: grid;
-  gap: 14px;
-}
-
-.shuffle-row {
-  display: flex;
-  gap: 12px;
-  width: max-content;
-}
-
-.shuffle-row-forward {
-  animation: shuffle-left 28s linear infinite;
-}
-
-.shuffle-row-reverse {
-  animation: shuffle-right 30s linear infinite;
-}
-
-.shuffle-tile {
-  width: clamp(116px, 13vw, 152px);
-  aspect-ratio: 0.82 / 1;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
-  flex: 0 0 auto;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
-}
-
-.shuffle-tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 45%, rgba(5, 5, 5, 0.24) 100%);
-}
-
-.shuffle-tile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.tilt-left {
-  transform: rotate(-3deg);
-}
-
-.tilt-right {
-  transform: rotate(3deg);
-}
-
-.shuffle-card:hover .shuffle-row-forward,
-.shuffle-card:hover .shuffle-row-reverse {
-  animation-play-state: paused;
-}
-
 .help-strip {
   margin: 28px 0 60px;
   padding: 28px;
@@ -529,21 +653,150 @@ footer a:hover {
   color: var(--red);
 }
 
-@keyframes shuffle-left {
+@keyframes drift-one {
   from {
-    transform: translateX(0);
+    transform: rotate(-9deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-6deg) translate3d(10px, 14px, 0);
   }
   to {
-    transform: translateX(calc(-50% - 6px));
+    transform: rotate(-9deg) translate3d(0, 0, 0);
   }
 }
 
-@keyframes shuffle-right {
+@keyframes drift-two {
   from {
-    transform: translateX(calc(-50% - 6px));
+    transform: rotate(7deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(4deg) translate3d(-14px, -10px, 0);
   }
   to {
-    transform: translateX(0);
+    transform: rotate(7deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-three {
+  from {
+    transform: rotate(10deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(13deg) translate3d(8px, -12px, 0);
+  }
+  to {
+    transform: rotate(10deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-four {
+  from {
+    transform: rotate(-7deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-4deg) translate3d(12px, 8px, 0);
+  }
+  to {
+    transform: rotate(-7deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-five {
+  from {
+    transform: rotate(5deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(8deg) translate3d(-10px, 12px, 0);
+  }
+  to {
+    transform: rotate(5deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-six {
+  from {
+    transform: rotate(12deg) scale(0.88) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(9deg) scale(0.9) translate3d(8px, 12px, 0);
+  }
+  to {
+    transform: rotate(12deg) scale(0.88) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-seven {
+  from {
+    transform: rotate(-10deg) scale(0.86) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-6deg) scale(0.88) translate3d(-8px, -12px, 0);
+  }
+  to {
+    transform: rotate(-10deg) scale(0.86) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-eight {
+  from {
+    transform: rotate(14deg) scale(0.72) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(10deg) scale(0.75) translate3d(10px, -8px, 0);
+  }
+  to {
+    transform: rotate(14deg) scale(0.72) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-nine {
+  from {
+    transform: rotate(-8deg) scale(0.76) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-12deg) scale(0.79) translate3d(12px, 8px, 0);
+  }
+  to {
+    transform: rotate(-8deg) scale(0.76) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-ten {
+  from {
+    transform: rotate(-14deg) scale(0.82) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-11deg) scale(0.84) translate3d(-10px, 12px, 0);
+  }
+  to {
+    transform: rotate(-14deg) scale(0.82) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift-eleven {
+  from {
+    transform: rotate(9deg) scale(0.8) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(5deg) scale(0.83) translate3d(12px, -10px, 0);
+  }
+  to {
+    transform: rotate(9deg) scale(0.8) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drag-hover {
+  from {
+    transform: rotate(-3deg) scale(1.08) translate3d(0, 0, 0);
+  }
+  35% {
+    transform: rotate(1deg) scale(1.1) translate3d(-36px, -28px, 0);
+  }
+  70% {
+    transform: rotate(-6deg) scale(1.06) translate3d(18px, 10px, 0);
+  }
+  to {
+    transform: rotate(-3deg) scale(1.08) translate3d(0, 0, 0);
   }
 }
 
@@ -552,8 +805,7 @@ footer a:hover {
   .steps,
   .callout-grid,
   .story-grid,
-  .layout-highlight,
-  .shuffle-showcase {
+  .layout-highlight {
     grid-template-columns: 1fr;
   }
 
@@ -573,8 +825,7 @@ footer a:hover {
   .install-card,
   .callout-card,
   .help-strip,
-  .instruction-step,
-  .shuffle-showcase {
+  .instruction-step {
     padding: 22px;
     border-radius: 22px;
   }
@@ -592,7 +843,210 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 
-  .shuffle-tile {
-    width: 110px;
+  .hero-copy {
+    min-height: 640px;
+    padding-top: 26px;
+  }
+
+  .hero-layout-cloud::before {
+    background:
+      linear-gradient(180deg, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.58) 36%, rgba(5, 5, 5, 0.3) 100%),
+      radial-gradient(circle at 70% 18%, rgba(255, 35, 0, 0.18), transparent 26%);
+  }
+
+  .hero-fashion-card,
+  .hero-slot {
+    right: auto;
+  }
+
+  .slot-one {
+    top: 130px;
+    left: 12px;
+  }
+
+  .slot-two {
+    top: 314px;
+    left: 52px;
+  }
+
+  .slot-three {
+    top: 118px;
+    left: 186px;
+  }
+
+  .slot-four {
+    top: 336px;
+    left: 202px;
+  }
+
+  .slot-five {
+    top: 98px;
+    left: 290px;
+  }
+
+  .slot-six {
+    top: 452px;
+    left: 144px;
+  }
+
+  .card-one {
+    top: 116px;
+    left: 28px;
+  }
+
+  .card-two {
+    top: 262px;
+    left: 98px;
+  }
+
+  .card-three {
+    top: 132px;
+    left: 210px;
+  }
+
+  .card-four {
+    top: 356px;
+    left: 226px;
+  }
+
+  .card-five {
+    top: 224px;
+    left: 184px;
+  }
+
+  .card-six {
+    top: 396px;
+    left: 42px;
+  }
+
+  .card-seven {
+    top: 74px;
+    left: 278px;
+  }
+
+  .card-eight {
+    top: 452px;
+    left: 196px;
+  }
+
+  .card-nine {
+    top: 192px;
+    left: 292px;
+  }
+
+  .card-ten {
+    top: 462px;
+    left: 76px;
+  }
+
+  .card-eleven {
+    top: 76px;
+    left: 88px;
+  }
+
+  .card-twelve {
+    top: 286px;
+    left: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-copy {
+    min-height: 700px;
+  }
+
+  .hero-fashion-card {
+    width: 116px;
+    border-radius: 20px;
+  }
+
+  .hero-slot {
+    width: 114px;
+    height: 154px;
+  }
+
+  .slot-one {
+    top: 212px;
+    left: 0;
+  }
+
+  .slot-two {
+    top: 350px;
+    left: 30px;
+  }
+
+  .slot-three {
+    top: 198px;
+    left: 132px;
+  }
+
+  .slot-four {
+    top: 374px;
+    left: 162px;
+  }
+
+  .slot-five,
+  .slot-six {
+    display: none;
+  }
+
+  .card-one {
+    top: 198px;
+    left: 14px;
+  }
+
+  .card-two {
+    top: 324px;
+    left: 58px;
+  }
+
+  .card-three {
+    top: 214px;
+    left: 148px;
+  }
+
+  .card-four {
+    top: 398px;
+    left: 176px;
+  }
+
+  .card-five {
+    top: 286px;
+    left: 116px;
+  }
+
+  .card-six {
+    top: 430px;
+    left: 10px;
+  }
+
+  .card-seven {
+    top: 162px;
+    left: 196px;
+  }
+
+  .card-eight {
+    top: 486px;
+    left: 110px;
+  }
+
+  .card-nine {
+    top: 252px;
+    left: 206px;
+  }
+
+  .card-ten {
+    top: 510px;
+    left: 18px;
+  }
+
+  .card-eleven {
+    top: 160px;
+    left: 76px;
+  }
+
+  .card-twelve {
+    top: 360px;
+    left: -6px;
   }
 }
