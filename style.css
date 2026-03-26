@@ -103,7 +103,9 @@ a {
 .install-card,
 .callout-card,
 .help-strip,
-.instruction-step {
+.instruction-step,
+.layout-highlight,
+.layout-card {
   border: 1px solid var(--border);
   background: linear-gradient(180deg, var(--panel-strong), var(--panel));
   box-shadow: var(--shadow);
@@ -261,6 +263,73 @@ a {
   line-height: 1.6;
 }
 
+.layout-highlight {
+  margin: 8px 0 28px;
+  padding: 28px;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 22px;
+  align-items: center;
+}
+
+.layout-copy h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.layout-card {
+  border-radius: 26px;
+  padding: 18px;
+}
+
+.layout-card-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.layout-card-header span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.layout-tile {
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--slate);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.feature-tile {
+  background: rgba(255, 35, 0, 0.16);
+  border-color: rgba(255, 106, 82, 0.45);
+  color: var(--white);
+  transform: rotate(-3deg);
+}
+
+.layout-caption {
+  margin-top: 14px;
+  color: var(--slate);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
 .help-strip {
   margin: 28px 0 60px;
   padding: 28px;
@@ -383,7 +452,8 @@ footer a:hover {
   #hero,
   .steps,
   .callout-grid,
-  .story-grid {
+  .story-grid,
+  .layout-highlight {
     grid-template-columns: 1fr;
   }
 
